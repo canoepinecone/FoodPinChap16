@@ -15,6 +15,10 @@ class RestaurantDetailViewController: UIViewController, UITableViewDataSource, U
     @IBOutlet var tableView: UITableView!
     @IBOutlet var headerView: RestaurantDetailHeaderView!
     
+    @IBAction func close(segue: UIStoryboardSegue) {
+        dismiss(animated: true, completion: nil)
+    }
+    
     var restaurant: Restaurant = Restaurant()
     
     // MARK: - View controller life style
@@ -107,6 +111,9 @@ class RestaurantDetailViewController: UIViewController, UITableViewDataSource, U
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "showMap" {
             let destinationController = segue.destination as! MapViewController
+            destinationController.restaurant = restaurant
+        } else if segue.identifier == "showReview" {
+            let destinationController = segue.destination as! ReviewViewController
             destinationController.restaurant = restaurant
         }
     }
