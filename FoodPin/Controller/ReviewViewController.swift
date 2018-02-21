@@ -44,35 +44,21 @@ class ReviewViewController: UIViewController {
     }
     
     override func viewWillAppear(_ animated: Bool) {
-        UIView.animate(withDuration: 1.0, delay: 0.1, options: [], animations: {
+        UIView.animate(withDuration: 0.7, delay: 0.1, options: [], animations: {
             self.closeButton.alpha = 1.0
             self.closeButton.transform = .identity
         }, completion: nil)
         
-        UIView.animate(withDuration: 0.8, delay: 0.1, usingSpringWithDamping: 0.2, initialSpringVelocity: 0.3, options: [], animations: {
-            self.rateButtons[0].alpha = 1.0
-            self.rateButtons[0].transform = .identity
-        }, completion: nil)
+        var delay = 0.1
         
-        UIView.animate(withDuration: 0.4, delay: 0.15, options: [], animations: {
-            self.rateButtons[1].alpha = 1.0
-            self.rateButtons[1].transform = .identity
-        }, completion: nil)
-        
-        UIView.animate(withDuration: 0.4, delay: 0.2, options: [], animations: {
-            self.rateButtons[2].alpha = 1.0
-            self.rateButtons[2].transform = .identity
-        }, completion: nil)
-        
-        UIView.animate(withDuration: 0.4, delay: 0.25, options: [], animations: {
-            self.rateButtons[3].alpha = 1.0
-            self.rateButtons[3].transform = .identity
-        }, completion: nil)
-        
-        UIView.animate(withDuration: 0.4, delay: 0.3, options: [], animations: {
-            self.rateButtons[4].alpha = 1.0
-            self.rateButtons[4].transform = .identity
-        }, completion: nil)
+        for rateButton in rateButtons {
+            UIView.animate(withDuration: 0.5, delay: delay, options: [], animations: {
+                rateButton.alpha = 1.0
+                rateButton.transform = .identity
+            }, completion: nil)
+            
+            delay += 0.1
+        }
     }
 
     override func didReceiveMemoryWarning() {
