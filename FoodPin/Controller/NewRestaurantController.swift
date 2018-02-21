@@ -49,6 +49,24 @@ class NewRestaurantController: UITableViewController, UITextFieldDelegate, UIIma
         }
     }
     
+    @IBAction func saveButton() {
+        if let name = nameTextField.text, let type = typeTextField.text, let address = addressTextField.text, let phone = phoneTextField.text, let description = descriptionTextView.text {
+            if name != "" && type != "" && address != "" && phone != "" && description != "" {
+                print("Name: \(name)\ntype: \(type)\naddress: \(address)\nphone: \(phone)\ndescription: \(description)")
+            } else {
+                let blankAlertController = UIAlertController(title: "Blank field", message: "One of the fields is blank", preferredStyle: .alert)
+                blankAlertController.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
+                self.present(blankAlertController, animated: true, completion: nil)
+            }
+        } else {
+            let nilStringAlertController = UIAlertController(title: "Error", message: "Not able to fetch field values", preferredStyle: .alert)
+            nilStringAlertController.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
+            self.present(nilStringAlertController, animated: true, completion: nil)
+        }
+        
+        dismiss(animated: true, completion: nil)
+    }
+    
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         if indexPath.row == 0 {
             let photoSourceRequestController = UIAlertController(title: "", message: "Choose your photo source", preferredStyle: .actionSheet)
