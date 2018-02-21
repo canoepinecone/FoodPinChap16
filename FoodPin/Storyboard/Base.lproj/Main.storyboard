@@ -405,7 +405,7 @@
                                 </connections>
                             </button>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="top" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="Hpm-fG-qG3">
-                                <rect key="frame" x="78.5" y="141" width="218" height="385"/>
+                                <rect key="frame" x="74" y="93" width="227" height="481"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="zOV-tI-WuR">
                                         <rect key="frame" x="0.0" y="0.0" width="188" height="82"/>
@@ -417,13 +417,18 @@
                                         <fontDescription key="fontDescription" name="Rubik-Regular" family="Rubik" pointSize="50"/>
                                         <state key="normal" title="Cool" image="cool"/>
                                     </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="X4W-95-kvM">
+                                        <rect key="frame" x="0.0" y="185" width="227" height="86"/>
+                                        <fontDescription key="fontDescription" name="Rubik-Regular" family="Rubik" pointSize="50"/>
+                                        <state key="normal" title="Happy" image="happy"/>
+                                    </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wUf-pm-wRX">
-                                        <rect key="frame" x="0.0" y="185" width="167" height="87"/>
+                                        <rect key="frame" x="0.0" y="281" width="167" height="87"/>
                                         <fontDescription key="fontDescription" name="Rubik-Regular" family="Rubik" pointSize="50"/>
                                         <state key="normal" title="Sad" image="sad"/>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="rgF-MP-ica">
-                                        <rect key="frame" x="0.0" y="282" width="218" height="103"/>
+                                        <rect key="frame" x="0.0" y="378" width="218" height="103"/>
                                         <fontDescription key="fontDescription" name="Rubik-Regular" family="Rubik" pointSize="50"/>
                                         <state key="normal" title="Angry" image="angry"/>
                                     </button>
@@ -445,6 +450,11 @@
                     </view>
                     <connections>
                         <outlet property="backgroundImageView" destination="cSN-5f-3Hz" id="70y-4Y-TuE"/>
+                        <outletCollection property="rateButtons" destination="zOV-tI-WuR" collectionClass="NSMutableArray" id="xjK-rv-Kh2"/>
+                        <outletCollection property="rateButtons" destination="Vmm-SY-AeZ" collectionClass="NSMutableArray" id="o0y-V1-VqV"/>
+                        <outletCollection property="rateButtons" destination="X4W-95-kvM" collectionClass="NSMutableArray" id="LFn-TR-fXj"/>
+                        <outletCollection property="rateButtons" destination="wUf-pm-wRX" collectionClass="NSMutableArray" id="HvI-yu-HHd"/>
+                        <outletCollection property="rateButtons" destination="rgF-MP-ica" collectionClass="NSMutableArray" id="VTV-DR-Cc7"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="IbU-UM-z88" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -475,6 +485,7 @@
         <image name="angry" width="78" height="103"/>
         <image name="cool" width="78" height="83"/>
         <image name="cross" width="33" height="32"/>
+        <image name="happy" width="78" height="86"/>
         <image name="heart-tick" width="22" height="21"/>
         <image name="love" width="78" height="82"/>
         <image name="sad" width="78" height="87"/>
