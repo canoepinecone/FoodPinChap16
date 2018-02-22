@@ -7,8 +7,11 @@
 //
 
 import UIKit
+import CoreData
 
 class NewRestaurantController: UITableViewController, UITextFieldDelegate, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
+    
+    var restaurant: RestaurantMO!
     
     @IBOutlet var photoImageView: UIImageView!
     
@@ -50,20 +53,22 @@ class NewRestaurantController: UITableViewController, UITextFieldDelegate, UIIma
     }
     
     @IBAction func saveButton() {
-        if let name = nameTextField.text, let type = typeTextField.text, let address = addressTextField.text, let phone = phoneTextField.text, let description = descriptionTextView.text {
-            if name != "" && type != "" && address != "" && phone != "" && description != "" {
-                print("Name: \(name)\ntype: \(type)\naddress: \(address)\nphone: \(phone)\ndescription: \(description)")
-            } else {
-                let blankAlertController = UIAlertController(title: "Blank field", message: "One of the fields is blank", preferredStyle: .alert)
-                blankAlertController.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
-                self.present(blankAlertController, animated: true, completion: nil)
-            }
-        } else {
-            let nilStringAlertController = UIAlertController(title: "Error", message: "Not able to fetch field values", preferredStyle: .alert)
-            nilStringAlertController.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
-            self.present(nilStringAlertController, animated: true, completion: nil)
+        if let appDelegate = (UIApplication.shared.delegate as? AppDelegate) {
+            restaurant = RestaurantMO(context: appDelegate.persistentContainer.viewContext)
         }
         
+        restaurant.name = nameTextField.text
+        restaurant.type = typeTextField.text
+        restaurant.location = addressTextField.text
+        restaurant.phone = phoneTextField.text
+        restaurant.summary = descriptionTextView.text
+        restaurant.isVisited = false
+        
+        if let restaurantImage = photoImageView.image {
+            restaurant.image = UIImagePNGRepresentation(restaurantImage)
+        }
+        
+        print("Saving data to context.")
         dismiss(animated: true, completion: nil)
     }
     
