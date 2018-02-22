@@ -68,10 +68,17 @@ class RestaurantTableViewController: UITableViewController, NSFetchedResultsCont
         tableView.backgroundView?.isHidden = true
         
         searchController = UISearchController(searchResultsController: nil)
+        
+        searchController!.searchBar.placeholder = "Search restaurants..."
+        searchController!.searchBar.barTintColor = .white
+        searchController!.searchBar.backgroundImage = UIImage()
+        searchController!.searchBar.tintColor = UIColor(red: 231, green: 76, blue: 60)
+        
         tableView.tableHeaderView = searchController!.searchBar
         
         searchController!.searchResultsUpdater = self
         searchController!.dimsBackgroundDuringPresentation = false
+        
     }
 
     override func viewWillAppear(_ animated: Bool) {
