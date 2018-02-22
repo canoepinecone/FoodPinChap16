@@ -9,7 +9,7 @@
 import UIKit
 import CoreData
 
-class RestaurantTableViewController: UITableViewController, NSFetchedResultsControllerDelegate {
+class RestaurantTableViewController: UITableViewController, NSFetchedResultsControllerDelegate, UISearchResultsUpdating {
     
     @IBOutlet var emptyRestaurantView: UIView!
 
@@ -18,6 +18,10 @@ class RestaurantTableViewController: UITableViewController, NSFetchedResultsCont
     var restaurants: [RestaurantMO] = []
     
     var fetchResultController: NSFetchedResultsController<RestaurantMO>!
+    
+    var searchController: UISearchController?
+    
+    var searchResults: [RestaurantMO] = []
     
     // MARK: - Unwind segue
     @IBAction func unwindToHome(segue: UIStoryboardSegue) {
@@ -62,6 +66,12 @@ class RestaurantTableViewController: UITableViewController, NSFetchedResultsCont
         
         tableView.backgroundView = emptyRestaurantView
         tableView.backgroundView?.isHidden = true
+        
+        searchController = UISearchController(searchResultsController: nil)
+        tableView.tableHeaderView = searchController!.searchBar
+        
+        searchController!.searchResultsUpdater = self
+        searchController!.dimsBackgroundDuringPresentation = false
     }
 
     override func viewWillAppear(_ animated: Bool) {
@@ -90,6 +100,10 @@ class RestaurantTableViewController: UITableViewController, NSFetchedResultsCont
     }
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        if let isActive = searchController?.isActive {
+            return isActive ? searchResults.count : restaurants.count
+        }
+        
         return restaurants.count
     }
 
@@ -97,6 +111,8 @@ class RestaurantTableViewController: UITableViewController, NSFetchedResultsCont
         
         let cellIdentifier = "Cell"
         let cell = tableView.dequeueReusableCell(withIdentifier: cellIdentifier, for: indexPath) as! RestaurantTableViewCell
+        
+        let restaurant = (searchController!.isActive) ? searchResults[indexPath.row] : restaurants[indexPath.row]
         
         // Configure the cell...
         cell.nameLabel.text = restaurants[indexPath.row].name
@@ -184,7 +200,7 @@ class RestaurantTableViewController: UITableViewController, NSFetchedResultsCont
         if segue.identifier == "showRestaurantDetail" {
             if let indexPath = tableView.indexPathForSelectedRow {
                 let destinationController = segue.destination as! RestaurantDetailViewController
-                destinationController.restaurant = restaurants[indexPath.row]
+                destinationController.restaurant = (searchController!.isActive) ? searchResults[indexPath.row] : restaurants[indexPath.row]
             }
         }
     }
@@ -220,6 +236,28 @@ class RestaurantTableViewController: UITableViewController, NSFetchedResultsCont
     
     func controllerDidChangeContent(_ controller: NSFetchedResultsController<NSFetchRequestResult>) {
         tableView.endUpdates()
+    }
+    // MARK: - Search functions
+    func filterContent(for searchText: String) {
+        searchResults = restaurants.filter({ (restaurant) -> Bool in
+            if let name = restaurant.name {
+                let isMatch = name.localizedCaseInsensitiveContains(searchText)
+                return isMatch
+            }
+            
+            return false
+        })
+    }
+    
+    func updateSearchResults(for searchController: UISearchController) {
+        if let searchText = searchController.searchBar.text {
+            filterContent(for: searchText)
+            tableView.reloadData()
+        }
+    }
+    
+    override func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
+        return !searchController!.isActive
     }
 
 }
