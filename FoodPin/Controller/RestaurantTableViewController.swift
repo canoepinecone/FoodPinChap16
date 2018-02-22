@@ -9,6 +9,8 @@
 import UIKit
 
 class RestaurantTableViewController: UITableViewController {
+    
+    @IBOutlet var emptyRestaurantView: UIView!
 
     // MARK: - Properties
     
@@ -34,6 +36,9 @@ class RestaurantTableViewController: UITableViewController {
         }
 
         navigationController?.hidesBarsOnSwipe = true
+        
+        tableView.backgroundView = emptyRestaurantView
+        tableView.backgroundView?.isHidden = true
     }
 
     override func viewWillAppear(_ animated: Bool) {
@@ -50,6 +55,14 @@ class RestaurantTableViewController: UITableViewController {
     // MARK: - UITableViewDataSource Protocol
 
     override func numberOfSections(in tableView: UITableView) -> Int {
+        if restaurants.count > 0 {
+            tableView.backgroundView?.isHidden = true
+            tableView.separatorStyle = .singleLine
+        } else {
+            tableView.backgroundView?.isHidden = false
+            tableView.separatorStyle = .none
+        }
+        
         return 1
     }
     
