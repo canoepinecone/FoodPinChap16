@@ -122,13 +122,13 @@ class RestaurantTableViewController: UITableViewController, NSFetchedResultsCont
         let restaurant = (searchController!.isActive) ? searchResults[indexPath.row] : restaurants[indexPath.row]
         
         // Configure the cell...
-        cell.nameLabel.text = restaurants[indexPath.row].name
-        if let restaurantImage = restaurants[indexPath.row].image {
+        cell.nameLabel.text = restaurant.name
+        if let restaurantImage = restaurant.image {
             cell.thumbnailImageView.image = UIImage(data: restaurantImage as Data)
         }
-        cell.locationLabel.text = restaurants[indexPath.row].location
-        cell.typeLabel.text = restaurants[indexPath.row].type
-        cell.heartImageView.isHidden = restaurants[indexPath.row].isVisited ? false : true
+        cell.locationLabel.text = restaurant.location
+        cell.typeLabel.text = restaurant.type
+        cell.heartImageView.isHidden = !restaurant.isVisited
         
         return cell
     }
@@ -247,8 +247,8 @@ class RestaurantTableViewController: UITableViewController, NSFetchedResultsCont
     // MARK: - Search functions
     func filterContent(for searchText: String) {
         searchResults = restaurants.filter({ (restaurant) -> Bool in
-            if let name = restaurant.name {
-                let isMatch = name.localizedCaseInsensitiveContains(searchText)
+            if let name = restaurant.name, let location = restaurant.location {
+                let isMatch = (name.localizedCaseInsensitiveContains(searchText) || location.localizedCaseInsensitiveContains(searchText))
                 return isMatch
             }
             
