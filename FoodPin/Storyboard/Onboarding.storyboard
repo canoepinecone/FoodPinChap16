@@ -76,18 +76,18 @@
             </objects>
             <point key="canvasLocation" x="415" y="-389"/>
         </scene>
-        <!--Walkthrough-->
+        <!--Walkthrough Page View Controller-->
         <scene sceneID="Qj1-jf-egv">
             <objects>
-                <pageViewController storyboardIdentifier="WalkthroughController" autoresizesArchivedViewToFullSize="NO" transitionStyle="scroll" navigationOrientation="horizontal" spineLocation="none" id="RhM-AI-OLI" customClass="Walkthrough" sceneMemberID="viewController"/>
+                <pageViewController storyboardIdentifier="WalkthroughPageViewController" autoresizesArchivedViewToFullSize="NO" transitionStyle="scroll" navigationOrientation="horizontal" spineLocation="none" id="RhM-AI-OLI" customClass="WalkthroughPageViewController" customModule="FoodPin" customModuleProvider="target" sceneMemberID="viewController"/>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="OcH-Wy-E80" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="74" y="173"/>
         </scene>
-        <!--Walkthrough Page View Controller-->
+        <!--Walkthrough View Controller-->
         <scene sceneID="Eub-la-2Sc">
             <objects>
-                <viewController storyboardIdentifier="WalkthroughPageViewController" id="BzJ-Cg-1DS" customClass="WalkthroughPageViewController" customModule="FoodPin" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="WalkthroughViewController" id="BzJ-Cg-1DS" customClass="WalkthroughViewController" customModule="FoodPin" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="7Pb-eS-fjP">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -151,6 +151,11 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="Qi2-V0-67B"/>
                     </view>
+                    <connections>
+                        <outlet property="nextButton" destination="VbW-fg-Wq8" id="TTc-X4-1jd"/>
+                        <outlet property="pageControl" destination="F70-Cf-SlA" id="0U7-Rl-11Q"/>
+                        <outlet property="skipButton" destination="exH-C9-2Ty" id="Pzk-2g-vAB"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="4UQ-fr-hQ5" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

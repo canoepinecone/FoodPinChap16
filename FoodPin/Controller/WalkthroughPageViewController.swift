@@ -36,6 +36,8 @@ class WalkthroughPageViewController: UIPageViewController, UIPageViewControllerD
         var index = (viewController as! WalkthroughContentViewController).index
         index -= 1
         
+        print(index)
+        
         return contentViewController(at: index)
     }
     
@@ -43,6 +45,8 @@ class WalkthroughPageViewController: UIPageViewController, UIPageViewControllerD
         
         var index = (viewController as! WalkthroughContentViewController).index
         index += 1
+        
+        print(index)
         
         return contentViewController(at: index)
     }
