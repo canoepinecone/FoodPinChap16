@@ -84,10 +84,10 @@
             </objects>
             <point key="canvasLocation" x="74" y="173"/>
         </scene>
-        <!--View Controller-->
+        <!--Walkthrough Page View Controller-->
         <scene sceneID="Eub-la-2Sc">
             <objects>
-                <viewController id="BzJ-Cg-1DS" sceneMemberID="viewController">
+                <viewController id="BzJ-Cg-1DS" customClass="WalkthroughPageViewController" customModule="FoodPin" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="7Pb-eS-fjP">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
