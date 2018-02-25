@@ -31,7 +31,7 @@
                             <outlet property="delegate" destination="MXb-rq-uYi" id="PXl-Ok-9qu"/>
                         </connections>
                     </tableView>
-                    <tabBarItem key="tabBarItem" title="Discover" image="discover" id="PCB-OD-n3Z"/>
+                    <tabBarItem key="tabBarItem" title="Discover" image="discover" selectedImage="discover" id="PCB-OD-n3Z"/>
                     <navigationItem key="navigationItem" title="Discover" id="HQM-fU-J4j"/>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="o0Q-lX-VX9" userLabel="First Responder" sceneMemberID="firstResponder"/>
