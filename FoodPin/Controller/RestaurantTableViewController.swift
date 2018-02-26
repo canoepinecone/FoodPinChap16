@@ -69,7 +69,7 @@ class RestaurantTableViewController: UITableViewController, NSFetchedResultsCont
         
         searchController = UISearchController(searchResultsController: nil)
         
-        searchController!.searchBar.placeholder = "Search restaurants..."
+        searchController!.searchBar.placeholder = NSLocalizedString("Search restaurants...", comment: "Search Restaurants")
         searchController!.searchBar.barTintColor = .white
         searchController!.searchBar.backgroundImage = UIImage()
         searchController!.searchBar.tintColor = UIColor(red: 231, green: 76, blue: 60)
@@ -151,7 +151,7 @@ class RestaurantTableViewController: UITableViewController, NSFetchedResultsCont
         }
         
         let shareAction = UIContextualAction(style: .normal, title: "Share") { (action, sourceView, completionHandler) in
-            let defaultText = "Just checking in at " + self.restaurants[indexPath.row].name!
+            let defaultText = NSLocalizedString("Just checking in at ", comment: "checking in)") + self.restaurants[indexPath.row].name!
             
             let activityController: UIActivityViewController
             
@@ -184,7 +184,7 @@ class RestaurantTableViewController: UITableViewController, NSFetchedResultsCont
     }
     
     override func tableView(_ tableView: UITableView, leadingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
-        let checkInAction = UIContextualAction(style: .normal, title: "Check-in") { (action, sourceView, completionHandler) in
+        let checkInAction = UIContextualAction(style: .normal, title: NSLocalizedString("Check-in", comment: "check in")) { (action, sourceView, completionHandler) in
             let cell = tableView.cellForRow(at: indexPath) as! RestaurantTableViewCell
             self.restaurants[indexPath.row].isVisited = (self.restaurants[indexPath.row].isVisited) ? false : true
             cell.heartImageView.isHidden = self.restaurants[indexPath.row].isVisited ? false : true

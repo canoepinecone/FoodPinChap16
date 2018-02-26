@@ -98,7 +98,7 @@ class RestaurantDetailViewController: UIViewController, UITableViewDataSource, U
             return cell
         case 3:
             let cell = tableView.dequeueReusableCell(withIdentifier: String(describing: RestaurantDetailSeparatorCell.self), for: indexPath) as! RestaurantDetailSeparatorCell
-            cell.titleLabel.text = "HOW TO GET HERE"
+            cell.titleLabel.text = NSLocalizedString("HOW TO GET HERE", comment: "how to get here")
             
             return cell
         case 4:
@@ -110,7 +110,7 @@ class RestaurantDetailViewController: UIViewController, UITableViewDataSource, U
             return cell
             
         default:
-            fatalError("Failed to instantiate the table view cell for detail view controller")
+            fatalError(NSLocalizedString("Failed to instantiate the table view cell for detail view controller", comment: "error table view cell"))
         }
     }
     
